@@ -12,3 +12,19 @@ img {
 :focus {
   outline: none;
 }
+
+.LegP1ContainerFirst {
+  display: none;
+}
+
+.LegP2No {
+  margin-right: 20px;
+}
+
+.LegP3No {
+  margin-right: 20px;
+}
+
+.LegP3Container {
+  margin-left: 40px;
+}

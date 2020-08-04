@@ -8,7 +8,7 @@ import loadable from '@loadable/component'
 const Favourite = loadable(() => import('../components/Favourite'))
 
 const Template = ({ pageContext, location, navigate }) => {
-  const { content } = pageContext
+  const { content, title, sectionNumber } = pageContext
   let section = Number(location.pathname.slice(1))
   const handler = ({ key }) => {
     if (key === 'ArrowLeft' && section > 1) {
@@ -40,11 +40,24 @@ const Template = ({ pageContext, location, navigate }) => {
               </Link>
             ) : null}
             <Box>
-              <Favourite section={section} />
-
+              <Flex>
+                <Text
+                  as='h1'
+                  sx={{
+                    lineHeight: '1.5',
+                    fontSize: 6,
+                    fontFamily: 'sansSerif',
+                    fontWeight: 'bold'
+                  }}
+                >
+                  {sectionNumber} {title}
+                </Text>
+                <Box ml={3}>
+                  <Favourite section={section} />
+                </Box>
+              </Flex>
               <Text
                 sx={{
-                  color: 'dark-gray',
                   lineHeight: '1.5',
                   fontSize: 3,
                   fontFamily: 'sansSerif'
