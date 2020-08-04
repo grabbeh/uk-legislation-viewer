@@ -14,7 +14,7 @@ const getCCAData = sections =>
   )
 
 exports.createPages = async ({ actions: { createPage } }) => {
-  const numbers = [...Array(2).keys()].slice(1)
+  const numbers = [...Array(193).keys()].slice(1)
   const CCAData = await getCCAData(numbers)
   const template = path.resolve(`src/templates/Template.js`)
   CCAData.forEach(async section => {
