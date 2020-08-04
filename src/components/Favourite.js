@@ -7,6 +7,7 @@ import { BsStarFill, BsStar } from 'react-icons/bs'
 const Favourite = ({ section }) => {
   const [favourite, setFavourite] = useState(false)
   const [favourites, setFavourites] = useLocalStorage('favourites')
+  console.log(favourites)
 
   useEffect(() => {
     if (!favourites) favourites = []
