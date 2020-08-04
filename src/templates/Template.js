@@ -4,7 +4,8 @@ import { Link } from 'gatsby'
 import Layout from '../components/Layout'
 import useEventListener from '@use-it/event-listener'
 import { FiArrowRight, FiArrowLeft } from 'react-icons/fi'
-import Favourite from '../components/Favourite'
+import loadable from '@loadable/component'
+const Favourite = loadable(() => import('../components/Favourite'))
 
 const Template = ({ pageContext, location, navigate }) => {
   const { content } = pageContext

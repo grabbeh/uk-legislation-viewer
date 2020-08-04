@@ -2,10 +2,7 @@ import React from 'react'
 import { Helmet } from 'react-helmet'
 import { css, useColorMode, Box } from 'theme-ui'
 import { Global } from '@emotion/core'
-
 import '../index.css'
-
-require('typeface-domine')
 
 const styles = css`
   * {

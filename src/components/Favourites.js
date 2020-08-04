@@ -4,8 +4,7 @@ import useLocalStorage from '../hooks/useLocalStorage'
 import { Link } from 'gatsby'
 
 const Favourite = ({ section }) => {
-  const [favourites, setFavourites] = useLocalStorage('favourites')
-
+  const [favourites] = useLocalStorage('favourites')
   return (
     <Box>
       {favourites.map(f => (

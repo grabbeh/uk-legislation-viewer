@@ -14,7 +14,7 @@ const getCCAData = sections =>
   )
 
 exports.createPages = async ({ actions: { createPage } }) => {
-  const numbers = [...Array(100).keys()].slice(1)
+  const numbers = [...Array(2).keys()].slice(1)
   const CCAData = await getCCAData(numbers)
   const template = path.resolve(`src/templates/Template.js`)
   CCAData.forEach(async section => {
@@ -29,4 +29,19 @@ exports.createPages = async ({ actions: { createPage } }) => {
       context: { title, sectionNumber, content }
     })
   })
+}
+
+exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
+  if (stage === 'build-html') {
+    actions.setWebpackConfig({
+      module: {
+        rules: [
+          {
+            test: /bad-module/,
+            use: loaders.null()
+          }
+        ]
+      }
+    })
+  }
 }

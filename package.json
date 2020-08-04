@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "@emotion/styled": "^10.0.27",
+    "@loadable/component": "^5.13.1",
     "@mdx-js/mdx": "^1.6.1",
     "@styled-system/prop-types": "^5.1.5",
     "@use-it/event-listener": "^0.1.5",
@@ -15,9 +16,7 @@
     "gatsby-plugin-mdx": "^1.2.11",
     "gatsby-plugin-react-helmet": "^3.3.2",
     "gatsby-plugin-theme-ui": "^0.3.0",
-    "gatsby-remark-prismjs": "^3.5.2",
     "gatsby-source-filesystem": "^2.3.7",
-    "gatsby-transformer-remark": "^2.8.12",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.0.0",
