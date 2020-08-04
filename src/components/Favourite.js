@@ -9,6 +9,7 @@ const Favourite = ({ section }) => {
   const [favourites, setFavourites] = useLocalStorage('favourites')
 
   useEffect(() => {
+    if (!favourites) favourites = []
     if (favourites && favourites.includes(section)) {
       console.log(favourites)
       setFavourite(true)
