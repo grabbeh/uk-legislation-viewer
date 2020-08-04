@@ -10,7 +10,7 @@ const Favourite = ({ section }) => {
   console.log(favourites)
 
   useEffect(() => {
-    if (!favourites) favourites = []
+    if (!favourites) setFavourites([])
     if (favourites && favourites.includes(section)) {
       console.log(favourites)
       setFavourite(true)
