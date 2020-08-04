@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Box, Flex, Text, useColorMode } from 'theme-ui'
+import { jsx, Box, Flex, Text } from 'theme-ui'
 import { Link } from 'gatsby'
 import Layout from '../components/Layout'
 import useEventListener from '@use-it/event-listener'
@@ -17,15 +17,11 @@ const convertPath = path => {
     return Number(path.slice(1, 4))
   } else return Number(path.slice(1))
 }
-const modes = ['dark', 'cyan', 'gray', 'book', 'magenta']
+
 const Template = ({ pageContext, location, navigate }) => {
   const { content, title, sectionNumber } = pageContext
   let section = convertPath(location.pathname)
-  const [mode, setMode] = useColorMode()
-  const cycleMode = () => {
-    const i = (modes.indexOf(mode) + 1) % modes.length
-    setMode(modes[i])
-  }
+
   const handler = ({ key }) => {
     if (key === 'ArrowLeft' && section > 1) {
       navigate(`/${section - 1}`)
