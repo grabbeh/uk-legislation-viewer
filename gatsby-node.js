@@ -22,9 +22,8 @@ exports.createPages = async ({ actions: { createPage } }) => {
     const { data, sectionNumber } = section
     const $ = cheerio.load(data)
     let title = $('#viewLegSnippet .LegP1GroupTitleFirst').text()
-    title = title.slice(0, title.indexOf('.'))
+    title = title.slice(0, title.indexOf('.U'))
     const content = $('#viewLegSnippet').html()
-
     createPage({
       path: `/${sectionNumber}`,
       component: template,

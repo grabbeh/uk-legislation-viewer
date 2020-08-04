@@ -7,7 +7,7 @@ const Favourite = ({ section }) => {
   const [favourites] = useLocalStorage('favourites')
   return (
     <Box>
-      {favourites.map(f => (
+      {favourites.sort().map(f => (
         <Box>
           <Link to={`/${f}`}>Section {f}</Link>
         </Box>

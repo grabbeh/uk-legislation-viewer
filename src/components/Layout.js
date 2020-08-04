@@ -1,6 +1,6 @@
-import React from 'react'
+/** @jsx jsx */
 import { Helmet } from 'react-helmet'
-import { css, useColorMode, Box } from 'theme-ui'
+import { jsx, css, useColorMode, Box } from 'theme-ui'
 import { Global } from '@emotion/core'
 import '../index.css'
 
@@ -17,8 +17,14 @@ const styles = css`
     padding: 0;
   }
 `
+
+const modes = ['dark', 'cyan', 'gray', 'book', 'magenta']
 const Layout = props => {
-  const [colorMode, setColorMode] = useColorMode()
+  const [mode, setMode] = useColorMode()
+  const cycleMode = () => {
+    const i = (modes.indexOf(mode) + 1) % modes.length
+    setMode(modes[i])
+  }
   return (
     <div>
       <Helmet>
@@ -30,11 +36,26 @@ const Layout = props => {
       <Box>
         <header>
           <button
-            onClick={e => {
-              setColorMode(colorMode === 'default' ? 'dark' : 'default')
+            title='Toggle Color Mode'
+            sx={{
+              fontFamily: 'sansSerif',
+              appearance: 'none',
+              fontSize: 2,
+              textTransform: 'uppercase',
+              letterSpacing: '0.1em',
+              fontWeight: 'bold',
+              border: 'none',
+              m: 3,
+              p: 2,
+              color: 'text',
+              bg: 'gray',
+              '&:focus': {
+                outline: '2px solid'
+              }
             }}
+            onClick={cycleMode}
           >
-            Toggle {colorMode === 'default' ? 'Dark' : 'Light'}
+            {mode}
           </button>
         </header>
         {props.children}

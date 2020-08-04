@@ -3,6 +3,21 @@ img {
   padding: 0;
 }
 
+button {
+  appearance: none;
+  font-family: inherit;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: bold;
+  border-width: initial;
+  border-style: none;
+  border-color: initial;
+  border-image: initial;
+  margin: 16px;
+  padding: 8px;
+}
+
 .height {
   height: 100vh;
   top: 0;
@@ -27,4 +42,13 @@ img {
 
 .LegP3Container {
   margin-left: 40px;
+}
+
+.LegAnnotations {
+  padding: 10px 20px;
+}
+
+.LegAnnotationsGroupHeading {
+  font-weight: bold;
+  font-size: 30px;
 }
