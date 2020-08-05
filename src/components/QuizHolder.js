@@ -143,7 +143,7 @@ const AnswerBox = styled(Box)`
   justify-content: center;
   align-items: center;
   height: 200px;
-  borderradius: 10px;
+  border-radius: 10px;
 
   background-color: ${props =>
     props.sectionNumber === props.correctSection ? '#19a974' : '#ff4136'};
