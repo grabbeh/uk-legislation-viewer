@@ -1,6 +1,6 @@
-//if (process.env.NODE_ENV === 'development' || !process.env.NODE_ENV) {
-require('dotenv').config()
-//}
+if (process.env.NODE_ENV === 'development' || !process.env.NODE_ENV) {
+  require('dotenv').config()
+}
 const axios = require('axios')
 const cheerio = require('cheerio')
 const path = require('path')
