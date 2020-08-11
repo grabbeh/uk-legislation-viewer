@@ -1,17 +1,32 @@
 /** @jsx jsx */
-import { jsx, Box } from 'theme-ui'
+import { jsx, Box, Button } from 'theme-ui'
 import useLocalStorage from '../hooks/useLocalStorage'
 import { Link } from 'gatsby'
 
 const Favourite = ({ section }) => {
-  const [favourites] = useLocalStorage('favourites')
+  const [favourites, setFavourites] = useLocalStorage('favourites')
   return (
     <Box>
-      {favourites.sort((a, b) => a - b).map(f => (
-        <Box>
-          <Link to={`/${f}`}>Section {f}</Link>
-        </Box>
-      ))}
+      <Box>
+        {favourites
+          .sort((a, b) => a - b)
+          .map(f => (
+            <Box key={f}>
+              <Link to={`/${f}`}>Section {f}</Link>
+            </Box>
+          ))}
+      </Box>
+      <Box>
+        {favourites.length > 0 ? (
+          <Button
+            onClick={() => {
+              setFavourites([])
+            }}
+          >
+            Clear favourites
+          </Button>
+        ) : null}
+      </Box>
     </Box>
   )
 }

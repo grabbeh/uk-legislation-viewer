@@ -21,6 +21,7 @@ const styles = css`
 const modes = ['dark', 'cyan', 'gray', 'book', 'magenta']
 const Layout = props => {
   const [mode, setMode] = useColorMode()
+
   const cycleMode = () => {
     const i = (modes.indexOf(mode) + 1) % modes.length
     setMode(modes[i])

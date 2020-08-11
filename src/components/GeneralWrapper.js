@@ -1,12 +1,9 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import { useState, useLayoutEffect } from 'react'
-
 import PropTypes from 'prop-types'
 import Layout from './Layout'
-
 import { Container, Box } from 'theme-ui'
-
 import '../index.css'
 
 const Wrapper = props => {

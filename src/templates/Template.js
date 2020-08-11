@@ -5,48 +5,54 @@ import Layout from '../components/Layout'
 import useEventListener from '@use-it/event-listener'
 import { FiArrowRight, FiArrowLeft } from 'react-icons/fi'
 import { useSwipeable } from 'react-swipeable'
+import legislation from '../../data/legislation.json'
 import loadable from '@loadable/component'
 const Favourite = loadable(() => import('../components/Favourite'))
 
 const convertPath = path => {
   if (path[2] === '/') {
-    return Number(path.slice(1, 2))
+    return path.slice(1, 2)
   } else if (path[3] === '/') {
-    return Number(path.slice(1, 3))
+    return path.slice(1, 3)
   } else if (path[4] === '/') {
-    return Number(path.slice(1, 4))
-  } else return Number(path.slice(1))
+    return path.slice(1, 4)
+  } else return path.slice(1)
 }
 
-const Template = ({ pageContext, location, navigate }) => {
+const sections = legislation.map(l => l.sectionNumber.toString())
+const Template = props => {
+  let { pageContext, location, navigate } = props
   const { content, title, sectionNumber } = pageContext
   let section = convertPath(location.pathname)
-
+  let currentIndex = sections.indexOf(section)
+  let next = sections[currentIndex + 1]
+  let previous = sections[currentIndex - 1]
   const handler = ({ key }) => {
     if (key === 'ArrowLeft' && section > 1) {
-      navigate(`/${section - 1}`)
+      navigate(`/${previous}`)
     }
     if (key === 'ArrowRight') {
-      navigate(`/${section + 1}`)
+      navigate(`/${next}`)
     }
   }
   useEventListener('keydown', handler)
   const swipeHandlers = useSwipeable({
     onSwipedRight: eventData => {
-      if (section > 1) {
-        navigate(`/${section - 1}`)
+      if (previous > -1) {
+        navigate(`/${previous}`)
       }
     },
     onSwipedLeft: eventData => {
-      navigate(`/${section + 1}`)
+      navigate(`/${next}`)
     }
   })
+
   return (
     <Layout>
       <Flex {...swipeHandlers} sx={{ justifyContent: 'center' }}>
         <Box sx={{ maxWidth: '1020px', p: 2 }}>
           <Flex>
-            {section > 1 ? (
+            {previous > 0 ? (
               <Link
                 sx={{
                   color: 'inherit',
@@ -54,7 +60,7 @@ const Template = ({ pageContext, location, navigate }) => {
                     color: 'primary'
                   }
                 }}
-                to={`/${section + -1}`}
+                to={`/${previous}`}
               >
                 <Text sx={{ fontSize: 8 }}>
                   <FiArrowLeft />
@@ -69,7 +75,7 @@ const Template = ({ pageContext, location, navigate }) => {
                   color: 'primary'
                 }
               }}
-              to={`/${section + 1}`}
+              to={`/${next}`}
             >
               <Text sx={{ fontSize: 8 }}>
                 <FiArrowRight />
