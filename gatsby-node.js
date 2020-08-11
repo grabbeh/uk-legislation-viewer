@@ -23,7 +23,7 @@ const addLetters = (numbers, alphabet) => {
 const getCCAData = sections => {
   let promises = sections.map(async sectionNumber => {
     const url = `${process.env.LEGISLATION_URL}/${sectionNumber}`
-    console.log(url)
+
     const { data } = await axios(url)
     const $ = cheerio.load(data)
     let title = $('#viewLegSnippet .LegP1GroupTitleFirst').text()
