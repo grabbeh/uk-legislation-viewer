@@ -4,14 +4,15 @@ import { useEffect, useState } from 'react'
 
 import search from '../libs/search'
 import SearchInput from './searchInput'
+import { Link } from 'gatsby'
 
 const Search = () => {
   let [searchTerm, setSearchTerm] = useState('')
   //let [liveInput, setLiveInput] = useState(false)
   let [results, setResults] = useState()
+  console.log(results)
 
   const clearSearchTerm = event => setSearchTerm('')
-
   const getSearchResults = (value = '') => {
     return search(value)
   }
@@ -34,12 +35,24 @@ const Search = () => {
         searchTerm={searchTerm}
       />
       <Box>
-        {results &&
-          results.map(r => (
-            <Box key={r.item.title}>
-              <Text sx={{ fontSize: 5 }}>{r.item.title}</Text>
+        {results && (
+          <Box>
+            <Box sx={{ mt: 3 }}>
+              <Text sx={{ fontSize: 6, fontWeight: 'bold' }}>
+                {results.length} results
+              </Text>
             </Box>
-          ))}
+            {results.sort().map((r, i) => (
+              <Box sx={{ my: 4 }} key={i}>
+                <Link to={`/${r.item.sectionNumber}`}>
+                  <Text sx={{ fontWeight: 'bold', fontSize: 5 }}>
+                    {r.item.sectionNumber} {r.item.title}
+                  </Text>
+                </Link>
+              </Box>
+            ))}
+          </Box>
+        )}
       </Box>
     </Box>
   )
