@@ -28,7 +28,7 @@ const Template = props => {
   let next = sections[currentIndex + 1]
   let previous = sections[currentIndex - 1]
   const handler = ({ key }) => {
-    if (key === 'ArrowLeft' && section > 1) {
+    if (key === 'ArrowLeft' && currentIndex > 0) {
       navigate(`/${previous}`)
     }
     if (key === 'ArrowRight') {
@@ -38,7 +38,7 @@ const Template = props => {
   useEventListener('keydown', handler)
   const swipeHandlers = useSwipeable({
     onSwipedRight: eventData => {
-      if (previous > -1) {
+      if (currentIndex > 0) {
         navigate(`/${previous}`)
       }
     },
@@ -52,7 +52,7 @@ const Template = props => {
       <Flex {...swipeHandlers} sx={{ justifyContent: 'center' }}>
         <Box sx={{ maxWidth: '1020px', p: 2 }}>
           <Flex>
-            {previous > 0 ? (
+            {currentIndex > 0 ? (
               <Link
                 sx={{
                   color: 'inherit',

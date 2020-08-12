@@ -23,7 +23,6 @@ const addLetters = (numbers, alphabet) => {
 const getCCAData = sections => {
   let promises = sections.map(async sectionNumber => {
     const url = `${process.env.LEGISLATION_URL}/${sectionNumber}`
-
     const { data } = await axios(url)
     const $ = cheerio.load(data)
     let title = $('#viewLegSnippet .LegP1GroupTitleFirst').text()
@@ -47,10 +46,8 @@ exports.createPages = async ({ actions: { createPage } }) => {
   const fullPossibleSections = _.uniq(
     _.flattenDeep(addLetters(numbers, alphabet))
   )
-
   const CCAData = await getCCAData(fullPossibleSections)
   const filteredCCAData = CCAData.filter(result => !(result instanceof Error))
-  console.log(filteredCCAData.length)
   writeFileAsync('./data/legislation.json', JSON.stringify(filteredCCAData))
   const template = path.resolve(`src/templates/Template.js`)
   filteredCCAData.forEach(async section => {
