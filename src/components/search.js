@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, Box, Text } from 'theme-ui'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 
 import search from '../libs/search'
 import SearchInput from './searchInput'
@@ -8,9 +8,10 @@ import { Link } from 'gatsby'
 
 const Search = () => {
   let [searchTerm, setSearchTerm] = useState('')
-  //let [liveInput, setLiveInput] = useState(false)
+  let [liveInput, setLiveInput] = useState()
   let [results, setResults] = useState()
-  console.log(results)
+  const liveInputRef = useRef(liveInput)
+  liveInputRef.current = liveInput
 
   const clearSearchTerm = event => setSearchTerm('')
   const getSearchResults = (value = '') => {
@@ -19,10 +20,13 @@ const Search = () => {
 
   const handleSearchInput = event => {
     setSearchTerm(event.target.value)
+    setTimeout(() => {
+      setLiveInput(false)
+    }, 2000)
   }
 
   useEffect(() => {
-    if (searchTerm.length > 0) {
+    if (searchTerm.length > 0 && !liveInput) {
       setResults(getSearchResults(searchTerm))
     }
   }, [searchTerm])

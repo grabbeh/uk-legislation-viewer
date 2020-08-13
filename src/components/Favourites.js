@@ -6,7 +6,7 @@ import { Link } from 'gatsby'
 const Favourite = ({ section }) => {
   const [favourites, setFavourites] = useLocalStorage('favourites')
   return (
-    <Box>
+    <Box sx={{ my: 4 }}>
       <Box>
         {favourites
           .sort((a, b) => a - b)

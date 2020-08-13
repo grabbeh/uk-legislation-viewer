@@ -1,0 +1,3 @@
+[template.environment]
+  LEGISLATION_URL='Base url for the legislation you want to put into the viewer i.e. https://www.legislation.gov.uk/ukpga/1974/39/section'  
+  TOTAL_SECTIONS='Number of sections'
