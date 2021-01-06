@@ -9,7 +9,7 @@
     "@mdx-js/mdx": "^1.6.1",
     "@styled-system/prop-types": "^5.1.5",
     "@use-it/event-listener": "^0.1.5",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "cheerio": "^1.0.0-rc.3",
     "emotion": "^10.0.27",
     "fuse.js": "^6.4.1",
